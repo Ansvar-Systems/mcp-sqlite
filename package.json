@@ -1,6 +1,6 @@
 {
   "name": "@ansvar/mcp-sqlite",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Drop-in replacement for better-sqlite3 using WebAssembly. Zero native modules — works on any Node.js version and platform. Includes FTS5.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
