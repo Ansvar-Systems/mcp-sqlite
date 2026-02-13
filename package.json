@@ -1,0 +1,50 @@
+{
+  "name": "@ansvar/mcp-sqlite",
+  "version": "1.0.1",
+  "description": "Drop-in replacement for better-sqlite3 using WebAssembly. Zero native modules — works on any Node.js version and platform. Includes FTS5.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "sqlite",
+    "wasm",
+    "better-sqlite3",
+    "fts5",
+    "mcp",
+    "drop-in",
+    "no-native"
+  ],
+  "author": "Ansvar Systems <hello@ansvar.eu> (https://ansvar.eu)",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ansvar-Systems/mcp-sqlite.git"
+  },
+  "homepage": "https://github.com/Ansvar-Systems/mcp-sqlite",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "node-sqlite3-wasm": "^0.8.53"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
