@@ -113,6 +113,16 @@ class Database {
 
   constructor(path: string, options?: DatabaseOptions) {
     this.path = path;
+    // Clear stale VFS lock directories left by crashes/OOM kills.
+    // node-sqlite3-wasm creates <path>.lock/ for file locking; if the
+    // process dies without calling close(), the lock persists and every
+    // subsequent open fails with "database is locked" permanently.
+    if (path !== ':memory:') {
+      const lockDir = path + '.lock';
+      if (existsSync(lockDir)) {
+        try { rmSync(lockDir, { recursive: true, force: true }); } catch {}
+      }
+    }
     this.db = new WasmDatabase(path, {
       readOnly: options?.readonly ?? false,
       fileMustExist: options?.fileMustExist ?? false,
